@@ -46,7 +46,7 @@
     <h1>{{ video.display_name }}</h1>
     <div class="video-container">
         <video controls autoplay id="videoPlayer">
-            <source src="{{ url_for('serve_video', filename=video.name + '.' + video.type) }}" type="video/{{ video.type }}">
+            <source src="{{ video.url }}" type="video/{{ video.type }}">
             Your browser does not support the video tag.
         </video>
     </div>
@@ -65,7 +65,6 @@
                 })
                 .catch(error => {
                     // Autoplay was prevented
-                    // Show a "Play" button so that user can start playback manually
                     console.log("Autoplay prevented:", error);
                 });
             }
