@@ -1,0 +1,12 @@
+{
+  "name": "video-player",
+  "version": "1.0.0",
+  "description": "Video player web application",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  }
+} 

@@ -1,3 +1,18 @@
+# Ignore everything
+*
+
+# Don't ignore these files and directories
+!build.js
+!netlify.toml
+!public/
+!cache/
+!cache/*.mp4
+!cache/*.webm
+!cache/*.mkv
+!README.md
+!package.json
+!package-lock.json
+
 __pycache__/
 *.py[cod]
 *$py.class
