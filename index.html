@@ -12,72 +12,33 @@
             padding: 20px;
             background-color: #f5f5f5;
         }
-        .video-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-        .video-item {
+        .video-container {
             background: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
+            margin-bottom: 20px;
         }
-        .video-item:hover {
-            transform: translateY(-2px);
-        }
-        .video-item a {
-            text-decoration: none;
-            color: #333;
-        }
-        .video-item h2 {
-            margin: 0 0 10px 0;
-            font-size: 1.2em;
+        video {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            display: block;
         }
         h1 {
             text-align: center;
             color: #333;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
     <h1>Video Player</h1>
-    <div id="videoList" class="video-list">
-        <!-- Videos will be loaded here -->
+    <div class="video-container">
+        <video controls autoplay>
+            <source src="cache/aknoon.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
-
-    <script>
-        // Function to get video list from the cache directory
-        async function loadVideos() {
-            try {
-                const response = await fetch('/videos.json');
-                const videos = await response.json();
-                const videoList = document.getElementById('videoList');
-                
-                if (videos.length === 0) {
-                    videoList.innerHTML = '<p>No videos found in the video list.</p>';
-                    return;
-                }
-
-                videoList.innerHTML = videos.map(video => `
-                    <div class="video-item">
-                        <a href="/video/${video.name}/">
-                            <h2>${video.display_name}</h2>
-                        </a>
-                    </div>
-                `).join('');
-            } catch (error) {
-                console.error('Error loading videos:', error);
-                document.getElementById('videoList').innerHTML = 
-                    '<p>Error loading videos. Please try again later.</p>';
-            }
-        }
-
-        // Load videos when the page loads
-        document.addEventListener('DOMContentLoaded', loadVideos);
-    </script>
 </body>
 </html> 
