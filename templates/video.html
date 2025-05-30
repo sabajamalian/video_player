@@ -42,11 +42,11 @@
     </style>
 </head>
 <body>
-    <a href="{{ url_for('index') }}" class="back-link">← Back to video list</a>
+    <a href="/" class="back-link">← Back to video list</a>
     <h1>{{ video.display_name }}</h1>
     <div class="video-container">
         <video controls autoplay id="videoPlayer">
-            <source src="{{ url_for('serve_video', filename=video.name + '.' + video.type) }}" type="video/{{ video.type }}">
+            <source src="/videos/{{ video.name }}.{{ video.type }}" type="video/{{ video.type }}">
             Your browser does not support the video tag.
         </video>
     </div>
