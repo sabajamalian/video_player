@@ -36,14 +36,35 @@ The application will:
 3. Serve the videos locally using a lightweight HTML5 video player
 4. Be available at `http://localhost:5000`
 
-## Deployment to Netlify
+## Docker Deployment
 
-1. Push your code to a Git repository
-2. Connect your repository to Netlify
-3. Configure the build settings:
-   - Build command: `pip install -r requirements.txt`
-   - Publish directory: `.`
-   - Python version: 3.9
+### Using Docker Compose (Recommended)
+
+1. Build and start the container:
+   ```bash
+   docker-compose up -d
+   ```
+
+2. The application will be available at `http://localhost:5000`
+
+### Using Docker Directly
+
+1. Build the Docker image:
+   ```bash
+   docker build -t video-player .
+   ```
+
+2. Run the container:
+   ```bash
+   docker run -d \
+     -p 5000:5000 \
+     -v $(pwd)/cache:/app/cache \
+     -v $(pwd)/videos.json:/app/videos.json \
+     --name video-player \
+     video-player
+   ```
+
+3. The application will be available at `http://localhost:5000`
 
 ## Features
 
@@ -53,7 +74,7 @@ The application will:
 - Clean, responsive interface
 - URL-friendly video names
 - Minimal dependencies
-- Ready for Netlify deployment
+- Ready for Docker deployment
 
 ## Adding Videos
 
@@ -67,3 +88,9 @@ To add a new video:
    - `type`: The video format (e.g., "mp4")
 
 The video will be automatically downloaded when the application starts. You can monitor the download progress in the console output.
+
+## Docker Volumes
+
+The application uses two Docker volumes:
+- `./cache:/app/cache`: Persists downloaded videos
+- `./videos.json:/app/videos.json`: Allows updating video list without rebuilding
