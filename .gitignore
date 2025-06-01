@@ -5,6 +5,7 @@
 !build.js
 !netlify.toml
 !public/
+!*.mp4
 !cache/
 !cache/*.mp4
 !cache/*.webm
