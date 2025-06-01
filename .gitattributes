@@ -2,5 +2,3 @@
 *.mp4 filter=lfs diff=lfs merge=lfs -text
 *.webm filter=lfs diff=lfs merge=lfs -text
 *.mkv filter=lfs diff=lfs merge=lfs -text
-# Cache directory
-cache/** filter=lfs diff=lfs merge=lfs -text 
